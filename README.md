@@ -1,5 +1,4 @@
-
-#The most greatest and legendary website repo of all time
+# The most greatest and legendary website repo of all time
 
 This is a repo. For a website. Made using sakura:
 
