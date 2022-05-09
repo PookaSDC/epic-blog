@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML5 Test Page</title>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link id="sakura-css" rel="stylesheet" href="css/sakura.css" />
+  </head>
+  <style>
+    #toggle {
+      color: white;
+      background-color: black;
+      font-size: 18px;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+    }
+    #top {
+      padding-top: 40px;
+    }
+    #toggleButton {
+      align: right;
+    }
+  </style>
+  <body>
+    <div id="toggle">
+      <span><button id="toggleButton" onclick="toggleSakura();">Toggle</button> Toggle sakura.css on/off</span><br>
+      <span id="switch"><button id="switchThemeButton" onclick="switchSakuraTheme();">Switch</button>Current theme: <span id="currentTheme">sakura (default)</span></span>
+    </div>
+    <div id="top" class="page" role="document">
+      <header role="banner">
+        <h1>SDC's Journal</h1>
+        <p>
+	I basically just write about anything I want. Haters deal or leave.
+        </p>
+      </header>
+
+      <footer role="contentinfo">
+        <p>
+          Made by <a href="http://twitter.com/cbracco">@cbracco</a>. Code on
+          <a href="http://github.com/cbracco/html5-test-page">GitHub</a>.
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script charset="utf-8">
+  var themes = [
+    {
+      name: "Sakura (default)",
+      href: "sakura.css",
+    },
+    {
+      name: "sakura-earthly",
+      href: "sakura-earthly.css",
+    },
+    {
+      name: "sakura-vader",
+      href: "sakura-vader.css",
+    },
+    {
+      name: "sakura-dark",
+      href: "sakura-dark.css"
+    },
+  ];
+  var current = 0;
+  var sakura = document.getElementById("sakura-css");
+  sakura.disabled = false;
+  function toggleSakura() {
+    if (sakura.disabled === true) {
+      sakura.disabled = false
+      switchTag.style.display = 'block';
+    } else {
+      sakura.disabled = true
+      switchTag.style.display = 'none';
+    }
+  }
+
+  var switchTag = document.getElementById("switch");
+  var currentThemeTag = document.getElementById("currentTheme");
+  function switchSakuraTheme() {
+    sakura.href = 'css/' + themes[(current + 1)% themes.length].href;
+    currentThemeTag.innerHTML = themes[(current + 1)% themes.length].name;
+    current += 1
+  }
+  </script>
+</html>
